@@ -43,15 +43,19 @@ const seasonalItems = coffeeMenu.filter(isSeasonal);
 console.table(seasonalItems);
 
 //Print all the seasonal drinks with the words "with imported beans" after the item name. For example: "affogato with imported beans".
-const isSeasonal2 = (item) => {
-  return item.seasonal == true;
-}
-const seasonalItems2 = coffeeMenu.filter(isSeasonal2);
-//console.table(seasonalItems2); // this works for the names only table
-console.log(seasonalItems2.map(printName)); // this works for names only
+const seasonalDrinks = coffeeMenu.filter(
+  (drinkObject) => !drinkObject.seasonal
+); // condition has to evaluate to true, even if you are trying to fetch non-seasonal drinks
 
+// 7. Print all the seasonal drinks with the words "with imported beans" after the item name. For example: "affogato with imported beans".
+const drinksImported = seasonalDrinks.map((drinkObject) => {
+  return drinkObject.name + " with imported beans";
+});
 
+// solution2
+const drinksImported2 = seasonalDrinks.map((drinkObject) => {
+  return drinkObject.name + " with imported beans";
+});
 
-
-
+console.log(drinksImported);
 
